@@ -6,7 +6,11 @@ import TodoList from './components/todo-list/TodoList';
 import { Todo } from './types/todos';
 
 const App = () => {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<Todo[]>(() => {
+      const saved: any = localStorage.getItem("todos");
+      const initialValue = JSON.parse(saved);
+      return initialValue || [];
+  })
   const [newTodos, setNewTodos] = useState<Todo[]>([])
   const [activeFilter, setActiveFilter] = useState<number>(0)
 
@@ -25,6 +29,11 @@ const App = () => {
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((item) => item.id !== id))
   }
+  
+  
+useEffect(() => {
+  localStorage.setItem('todos', JSON.stringify(todos))
+}, [todos])
 
   return (
     <div className='app'>
