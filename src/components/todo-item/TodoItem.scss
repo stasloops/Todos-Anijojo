@@ -3,15 +3,22 @@
     background-color: #fff;
     padding: 9px 20px;
     border-radius: 10px;
-    display: flex;
+    width: 100%;
     cursor: pointer;
+    
+    &__top {
+        display: flex;
+        justify-content: space-between;
+    }
 
     &__done {
+        min-width: 20px;
         width: 20px;
         height: 20px;
         margin-right: 20px;
+        margin-bottom: 10px;
         border: 1px solid #cae962;
-        border-radius: 50px;
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -29,10 +36,12 @@
     &__title {
         margin: 0;
         font-weight: 400;
+        white-space: pre-wrap;
     }
 
     &__delete {
         position: absolute;
+
         right: 20px;
         color: #e73d3d;
         transition: 0.2s;
@@ -42,5 +51,7 @@
             transition: 0.2s;
             transform: scale(1.9);
         }
+
+       
     }
 }

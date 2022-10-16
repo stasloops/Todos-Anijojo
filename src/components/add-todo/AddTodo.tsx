@@ -10,10 +10,12 @@ type AddTodoProps = {
 const AddTodo: FC<AddTodoProps> = ({ setTodos, todos }) => {
   const [value, setValue] = useState<string>('')
 
-  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value)
+   
+    
   }
-
+  console.log(value);
   const createTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     if (value.length > 0) {
@@ -29,7 +31,7 @@ const AddTodo: FC<AddTodoProps> = ({ setTodos, todos }) => {
 
   return (
     <form className='form'>
-      <input value={value} onChange={e => changeValue(e)} className='form__input' placeholder='Новый чек-лист' />
+      <textarea value={value} onChange={e => changeValue(e)} className='form__input' placeholder='Новый чек-лист' />
       <button onClick={e => createTodo(e)} className='form__button'>+</button>
     </form>
   )
